@@ -41,7 +41,7 @@ void exportToBinaryFile(node *head)
 				printf("\n\nВъзникна грешка с обработвания файл!");
 		}
 	}
-	
+
 	fclose(fp);
 	fp = NULL;
 }
@@ -103,6 +103,6 @@ node *readNextStructFromBinary(node *head, FILE *fp)
 		newE->next = NULL;
 		newE->prev = index;
 	}
-	
+
 	return head;
 }

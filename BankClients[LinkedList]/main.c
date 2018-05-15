@@ -22,7 +22,7 @@ int main()
 			system("cls");
 			switch (subMenuAdd())
 			{
-			case '1': 
+			case '1':
 				head = addToHead(head);
 				_getch();
 				break;
@@ -50,7 +50,7 @@ int main()
 				break;
 			}
 			break;
-		case '3': 
+		case '3':
 			system("cls");
 			switch (subMenuDelete())
 			{

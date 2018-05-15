@@ -1,32 +1,32 @@
-#include "globalDefs.h"
+ï»¿#include "globalDefs.h"
 
 node *makeNewClient()
 {
 	system("cls");
 	node *newE = (node*)malloc(sizeof(node));
 
-	printf("\nÈìå íà êëèåíòà: ");
+	printf("\nÐ˜Ð¼Ðµ Ð½Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°: ");
 	fflush(stdin);
 	gets(newE->d.fullName);
 	strcpy(newE->d.id, getRandomID(6));
 	fflush(stdin);
-	printf("\nÑóìà: ");
+	printf("\nÐ¡ÑƒÐ¼Ð°: ");
 	scanf("%f", &newE->d.sum);
-	printf("\nÏðåñòîé íà ñóìàòà â áàíêàòà (â ìåñåöè): ");
+	printf("\nÐŸÑ€ÐµÑÑ‚Ð¾Ð¹ Ð½Ð° ÑÑƒÐ¼Ð°Ñ‚Ð° Ð² Ð±Ð°Ð½ÐºÐ°Ñ‚Ð° (Ð² Ð¼ÐµÑÐµÑ†Ð¸): ");
 	scanf("%d", &newE->d.months);
 
 	newE->next = NULL;
 	newE->prev = NULL;
-		
+
 	return newE;
 }
 
 char *getRandomID(size_t length)
 {
-	const char charSet[] = 
+	const char charSet[] =
 		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	char *randID = NULL;
-	
+
 	if (length)
 	{
 		randID = malloc(sizeof(char) * (length + 1));
@@ -43,11 +43,11 @@ char *getRandomID(size_t length)
 		}
 		else
 		{
-			printf("\n\nÍÿìà äîñòàòú÷íî ïàìåò!");
+			printf("\n\nÐÑÐ¼Ð° Ð´Ð¾ÑÑ‚Ð°Ñ‚ÑŠÑ‡Ð½Ð¾ Ð¿Ð°Ð¼ÐµÑ‚!");
 			return NULL;
 		}
 	}
-	
+
 	return randID;
 }
 
@@ -66,7 +66,7 @@ node *addToHead(node *head)
 		exportToBinaryFile(head);
 	}
 
-	printf("\n\nÊëèåíòúò áåøå äîáàâåí êúì ñïèñúêà!");
+	printf("\n\nÐšÐ»Ð¸ÐµÐ½Ñ‚ÑŠÑ‚ Ð±ÐµÑˆÐµ Ð´Ð¾Ð±Ð°Ð²ÐµÐ½ ÐºÑŠÐ¼ ÑÐ¿Ð¸ÑÑŠÐºÐ°!");
 
 	return newE;
 }
@@ -90,7 +90,7 @@ node *addToTail(node *head)
 		newE = makeNewClient();
 		index->next = newE;
 		newE->prev = index;
-		printf("\n\nÊëèåíòúò áåøå äîáàâåí êúì ñïèñúêà!");
+		printf("\n\nÐšÐ»Ð¸ÐµÐ½Ñ‚ÑŠÑ‚ Ð±ÐµÑˆÐµ Ð´Ð¾Ð±Ð°Ð²ÐµÐ½ ÐºÑŠÐ¼ ÑÐ¿Ð¸ÑÑŠÐºÐ°!");
 	}
 
 	return head;
@@ -101,7 +101,7 @@ node *insertToList(node *head)
 	node *afterE = head, *newE = NULL;
 	char input[16];
 
-	printf("\nID íà êëèåíòà, ñëåä êîãîòî ùå áúäå äîáàâåí íîâ: ");
+	printf("\nID Ð½Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°, ÑÐ»ÐµÐ´ ÐºÐ¾Ð³Ð¾Ñ‚Ð¾ Ñ‰Ðµ Ð±ÑŠÐ´Ðµ Ð´Ð¾Ð±Ð°Ð²ÐµÐ½ Ð½Ð¾Ð²: ");
 	scanf("%s", input);
 
 	if (strcmp(input, afterE->d.id) == 0)
@@ -130,10 +130,10 @@ node *insertToList(node *head)
 		afterE->next = newE;
 		newE->prev = afterE;
 
-		printf("\n\nÊëèåíòúò áåøå äîáàâåí ñëåä %s", afterE->d.fullName);
+		printf("\n\nÐšÐ»Ð¸ÐµÐ½Ñ‚ÑŠÑ‚ Ð±ÐµÑˆÐµ Ð´Ð¾Ð±Ð°Ð²ÐµÐ½ ÑÐ»ÐµÐ´ %s", afterE->d.fullName);
 	}
-	else 
-		printf("\n\nÍÿìà êëèåíò ñ òîâà ID!");
+	else
+		printf("\n\nÐÑÐ¼Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚ Ñ Ñ‚Ð¾Ð²Ð° ID!");
 
 	return head;
 }
@@ -142,22 +142,22 @@ void searchID(node *head)
 {
 	if (!exists("myList.dat"))
 	{
-		printf("\nÍå ñúùåñòâóâà ñúçäàäåí ñïèñúê!");
+		printf("\nÐÐµ ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð° ÑÑŠÐ·Ð´Ð°Ð´ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº!");
 		return;
 	}
 
 	node *temp = head;
 	char searchID[10];
 	int flag = 0;
-	
-	printf("\nÂúâåäåòå ID íà òúðñåíèÿ êëèåíò: ");
+
+	printf("\nÐ’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ ID Ð½Ð° Ñ‚ÑŠÑ€ÑÐµÐ½Ð¸Ñ ÐºÐ»Ð¸ÐµÐ½Ñ‚: ");
 	scanf("%s", searchID);
 
 	while (temp != NULL)
 	{
 		if (strcmp(temp->d.id, searchID) == 0)
 		{
-			printf("\n\nÈìå: %s\nÑóìà: %.2f ëâ.\nÏðåñòîé íà ñóìàòà: %d ìåñåöà\n", 
+			printf("\n\nÐ˜Ð¼Ðµ: %s\nÐ¡ÑƒÐ¼Ð°: %.2f Ð»Ð².\nÐŸÑ€ÐµÑÑ‚Ð¾Ð¹ Ð½Ð° ÑÑƒÐ¼Ð°Ñ‚Ð°: %d Ð¼ÐµÑÐµÑ†Ð°\n",
 				temp->d.fullName, temp->d.sum, temp->d.months);
 
 			flag = 1;
@@ -167,30 +167,30 @@ void searchID(node *head)
 		temp = temp->next;
 	}
 
-	if (!flag) 
-		printf("\n\nÍÿìà íàìåðåíî ñúâïàäåíèå!");
+	if (!flag)
+		printf("\n\nÐÑÐ¼Ð° Ð½Ð°Ð¼ÐµÑ€ÐµÐ½Ð¾ ÑÑŠÐ²Ð¿Ð°Ð´ÐµÐ½Ð¸Ðµ!");
 }
 
 node *deleteEntry(node *head)
 {
 	if (!exists("myList.dat"))
 	{
-		printf("\nÍå ñúùåñòâóâà ñúçäàäåí ñïèñúê!");
+		printf("\nÐÐµ ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð° ÑÑŠÐ·Ð´Ð°Ð´ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº!");
 		return NULL;
 	}
 
 	node *temp = head, *toDelete = NULL;
 	char input[16], *client;
 	int flag = 0;
-	
+
 	if (temp == NULL)
 	{
-		printf("\nÃðåøêà! Ïðàçåí ñïèñúê");
+		printf("\nÐ“Ñ€ÐµÑˆÐºÐ°! ÐŸÑ€Ð°Ð·ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº");
 		return 0;
 	}
 	else
 	{
-		printf("\nÂúâåäåòå ID íà êëèåíòà: ");
+		printf("\nÐ’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ ID Ð½Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°: ");
 		scanf("%s", input);
 
 		while (temp != NULL)
@@ -227,14 +227,14 @@ node *deleteEntry(node *head)
 		{
 			toDelete = NULL;
 			free(toDelete);
-			
+
 			if (flag)
-				printf("\nÊëèåíòúò %s å èçòðèò!", client);
+				printf("\nÐšÐ»Ð¸ÐµÐ½Ñ‚ÑŠÑ‚ %s Ðµ Ð¸Ð·Ñ‚Ñ€Ð¸Ñ‚!", client);
 		}
 		if (!flag)
-			printf("\nÍÿìà êëèåíò ñ òàêîâà ID!");
+			printf("\nÐÑÐ¼Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚ Ñ Ñ‚Ð°ÐºÐ¾Ð²Ð° ID!");
 	}
-	
+
 	return head;
 }
 
@@ -242,7 +242,7 @@ void destroyList(node *head)
 {
 	if (!exists("myList.dat"))
 	{
-		printf("\nÍå ñúùåñòâóâà ñúçäàäåí ñïèñúê!");
+		printf("\nÐÐµ ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð° ÑÑŠÐ·Ð´Ð°Ð´ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº!");
 		return;
 	}
 
@@ -251,27 +251,27 @@ void destroyList(node *head)
 
 	if (head != NULL)
 	{
-		printf("\nÑèãóðíè ëè ñòå? [äà/íå]: ");
+		printf("\nÐ¡Ð¸Ð³ÑƒÑ€Ð½Ð¸ Ð»Ð¸ ÑÑ‚Ðµ? [Ð´Ð°/Ð½Ðµ]: ");
 		scanf("%s", input);
 
-		if (strcmp(input, "äà") == 0)
+		if (strcmp(input, "Ð´Ð°") == 0)
 		{
 			if ((fp = fopen("myList.dat", "wb")) != NULL)
 			{
 				memoryCleanup(head);
-				printf("\nÑïèñúêúò áåøå óñïåøíî çàëè÷åí!");
+				printf("\nÐ¡Ð¿Ð¸ÑÑŠÐºÑŠÑ‚ Ð±ÐµÑˆÐµ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð·Ð°Ð»Ð¸Ñ‡ÐµÐ½!");
 			}
-			else printf("\nÂúçíèêíà ãðåøêà ïðè èçòðèâàíåòî!");
+			else printf("\nÐ’ÑŠÐ·Ð½Ð¸ÐºÐ½Ð° Ð³Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð¸Ð·Ñ‚Ñ€Ð¸Ð²Ð°Ð½ÐµÑ‚Ð¾!");
 		}
 		else
 		{
-			printf("\nÈçòðèâàíåòî îòêàçàíî...");
+			printf("\nÐ˜Ð·Ñ‚Ñ€Ð¸Ð²Ð°Ð½ÐµÑ‚Ð¾ Ð¾Ñ‚ÐºÐ°Ð·Ð°Ð½Ð¾...");
 			return;
 		}
 
 		fclose(fp);
 	}
-	else printf("\nÃðåøêà! Ïðàçåí ñïèñúê");
+	else printf("\nÐ“Ñ€ÐµÑˆÐºÐ°! ÐŸÑ€Ð°Ð·ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº");
 }
 
 float getAverage(node *head)
@@ -284,7 +284,7 @@ float getAverage(node *head)
 
 	if (head == NULL)
 	{
-		printf("\nÃðåøêà! Ïðàçåí ñïèñúê");
+		printf("\nÐ“Ñ€ÐµÑˆÐºÐ°! ÐŸÑ€Ð°Ð·ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº");
 		return 0;
 	}
 
@@ -304,7 +304,7 @@ int exists(char *fileName)
 
 	if ((fp = fopen(fileName, "r")))
 		return 1;
-	
+
 	return 0;
 }
 
@@ -312,19 +312,19 @@ void printAvgFromFile(node *head, float avg)
 {
 	if (!exists("myList.dat"))
 	{
-		printf("\nÍå ñúùåñòâóâà ñúçäàäåí ñïèñúê!");
+		printf("\nÐÐµ ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð° ÑÑŠÐ·Ð´Ð°Ð´ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº!");
 		return;
 	}
 
 	if (head != NULL)
 	{
 		system("cls");
-		printf("\nÈçâåæäàíå íà êëèåíòèòå ñúñ ñóìà ïî-ãîëÿìà îò ñðåäíàòà çà âñè÷êè:\n\n");
+		printf("\nÐ˜Ð·Ð²ÐµÐ¶Ð´Ð°Ð½Ðµ Ð½Ð° ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð¸Ñ‚Ðµ ÑÑŠÑ ÑÑƒÐ¼Ð° Ð¿Ð¾-Ð³Ð¾Ð»ÑÐ¼Ð° Ð¾Ñ‚ ÑÑ€ÐµÐ´Ð½Ð°Ñ‚Ð° Ð·Ð° Ð²ÑÐ¸Ñ‡ÐºÐ¸:\n\n");
 
 		while (head)
 		{
 			if (head->d.sum > avg)
-				printf("\nÈìå: %s\nID: %s\nÑóìà: %.2f ëâ.\nÏðåñòîé íà ñóìàòà: %d ìåñåöà\n",
+				printf("\nÐ˜Ð¼Ðµ: %s\nID: %s\nÐ¡ÑƒÐ¼Ð°: %.2f Ð»Ð².\nÐŸÑ€ÐµÑÑ‚Ð¾Ð¹ Ð½Ð° ÑÑƒÐ¼Ð°Ñ‚Ð°: %d Ð¼ÐµÑÐµÑ†Ð°\n",
 				head->d.fullName, head->d.id, head->d.sum, head->d.months);
 
 			head = head->next;
@@ -336,23 +336,23 @@ void printList(node *head)
 {
 	if (!exists("myList.dat"))
 	{
-		printf("\nÍå ñúùåñòâóâà ñúçäàäåí ñïèñúê!");
+		printf("\nÐÐµ ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð° ÑÑŠÐ·Ð´Ð°Ð´ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº!");
 		return;
 	}
-		
+
 	int cnt = 1;
 
 	if (!head)
-		printf("\nÃðåøêà! Ïðàçåí ñïèñúê");
+		printf("\nÐ“Ñ€ÐµÑˆÐºÐ°! ÐŸÑ€Ð°Ð·ÐµÐ½ ÑÐ¿Ð¸ÑÑŠÐº");
 	else
 	{
 		system("cls");
 		while (head)
 		{
 			printf("\n\t[%d]", cnt);
-			printf("\nÈìå: %s\nID: %s\nÑóìà: %.2f ëâ.\nÏðåñòîé íà ñóìàòà: %d ìåñåöà\n",
+			printf("\nÐ˜Ð¼Ðµ: %s\nID: %s\nÐ¡ÑƒÐ¼Ð°: %.2f Ð»Ð².\nÐŸÑ€ÐµÑÑ‚Ð¾Ð¹ Ð½Ð° ÑÑƒÐ¼Ð°Ñ‚Ð°: %d Ð¼ÐµÑÐµÑ†Ð°\n",
 				head->d.fullName, head->d.id, head->d.sum, head->d.months);
-			
+
 			cnt++;
 			head = head->next;
 		}
