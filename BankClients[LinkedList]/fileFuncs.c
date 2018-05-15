@@ -1,4 +1,4 @@
-#include "globalDefs.h"
+п»ї#include "globalDefs.h"
 
 void exportToBinaryFile(node *head)
 {
@@ -6,7 +6,7 @@ void exportToBinaryFile(node *head)
 
 	if (head == NULL)
 	{
-		printf("Грешка! Празен списък!");
+		printf("Р“СЂРµС€РєР°! РџСЂР°Р·РµРЅ СЃРїРёСЃСЉРє!");
 		return;
 	}
 	else
@@ -38,7 +38,7 @@ void exportToBinaryFile(node *head)
 			}
 
 			if (ferror(fp))
-				printf("\n\nВъзникна грешка с обработвания файл!");
+				printf("\n\nР’СЉР·РЅРёРєРЅР° РіСЂРµС€РєР° СЃ РѕР±СЂР°Р±РѕС‚РІР°РЅРёСЏ С„Р°Р№Р»!");
 		}
 	}
 
@@ -70,7 +70,7 @@ node *readListFromBinaryFile(node *head)
 	}
 	else
 	{
-		printf("\nГрешка при отваряне на двоичния файл!");
+		printf("\nР“СЂРµС€РєР° РїСЂРё РѕС‚РІР°СЂСЏРЅРµ РЅР° РґРІРѕРёС‡РЅРёСЏ С„Р°Р№Р»!");
 		return NULL;
 	}
 
