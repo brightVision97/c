@@ -60,6 +60,7 @@ int main()
 				break;
 			case '2':
 				destroyList(head);
+				head = NULL;
 				_getch();
 				break;
 			case '0':
